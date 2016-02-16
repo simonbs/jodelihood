@@ -1,0 +1,40 @@
+{
+  "name": "jodelihood",
+  "version": "1.0.0",
+  "description": "Jodels in your hood.",
+  "main": "index.js",
+  "dependencies": {
+    "fluxxor": "^1.7.3",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "webpack": "^1.12.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/simonbs/jodelihood.git"
+  },
+  "keywords": [
+    "jodel",
+    "hood",
+    "nearby",
+    "jodels",
+    "location",
+    "around"
+  ],
+  "author": "Simon B. Støvring",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonbs/jodelihood/issues"
+  },
+  "homepage": "https://github.com/simonbs/jodelihood#readme"
+}
