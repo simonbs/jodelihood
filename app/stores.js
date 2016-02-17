@@ -43,28 +43,28 @@ export const UserStore = Fluxxor.createStore({
   }
 });
 
-export const JodelsStore = Fluxxor.createStore({
+export const PostsStore = Fluxxor.createStore({
   initialize: function() {
-    this.jodels = {};
+    this.posts = {};
 
     this.bindActions(
-      Actions.Constants.LOAD_JODELS, this.onLoadJodels
+      Actions.Constants.LOAD_POSTS, this.onLoadPosts
     );
   },
 
-  onLoadJodels: function(payload) {
-    this.jodels = {};
+  onLoadPosts: function(payload) {
+    this.posts = {};
     this.emit('change');
   },
 
   getState: function() {
     return {
-      jodels: this.jodels
+      posts: this.posts
     };
   }
 });
 
 export const All = {
   UserStore: new UserStore(),
-  JodelsStore: new JodelsStore()
+  PostsStore: new PostsStore()
 };

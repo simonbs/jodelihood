@@ -7,9 +7,9 @@ export const Constants = {
   LOAD_USER_SUCCESS: 'LOAD_USER_SUCCESS',
   LOAD_USER_FAIL: 'LOAD_USER_FAIL',
   
-  LOAD_JODELS: 'LOAD_JODELS',
-  LOAD_JODELS_SUCCESS: 'LOAD_JODELS_SUCCESS',
-  LOAD_JODELS_FAIL: 'LOAD_JODELS_FAIL'
+  LOAD_POSTS: 'LOAD_POSTS',
+  LOAD_POSTS_SUCCESS: 'LOAD_POSTS_SUCCESS',
+  LOAD_POSTS_FAIL: 'LOAD_POSTS_FAIL'
 };
 
 export const All = {
@@ -28,6 +28,6 @@ export const All = {
   },
   
   loadJodels: function() {
-    this.dispatch(Constants.LOAD_JODELS);
+    this.dispatch(Constants.LOAD_POSTS);
   }  
 };

@@ -7,8 +7,6 @@ var Stores = require('./stores');
 
 import Main from './components/Main';
 
-import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
-
 var flux = new Fluxxor.Flux(Stores.All, Actions.All);
 
 window.React = React;
@@ -24,7 +22,7 @@ var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var Application = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin('UserStore', 'JodelsStore')],
+  mixins: [FluxMixin, StoreWatchMixin('UserStore', 'PostsStore')],
 
   getInitialState: function() {
     return { newTodoText: '' };
@@ -34,7 +32,7 @@ var Application = React.createClass({
     var flux = this.getFlux();
     return {
       userData: flux.store('UserStore').getState(),
-      jodelsData: flux.store('JodelsStore').getState()
+      postsData: flux.store('PostsStore').getState()
     }
   },
 
@@ -43,11 +41,9 @@ var Application = React.createClass({
   },
 
   render: function() {
-    var jodels = this.state.jodels;
     return (
-      <div>
       <Main />
-      </div>);
+    );
   },
 });
 
