@@ -10,8 +10,14 @@ module.exports = {
   devtool: "source-map",
   module: {
     loaders: [
-      { test: /\.less$/, loader: "style!css!less" },
-      { test: /\.json$/, loader: "json" },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
+      },
+      {
+        test: /\.json$/,
+        loader: "json"
+      },
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
