@@ -1,44 +1,49 @@
 var Fluxxor = require('fluxxor');
 var Actions = require('./actions');
 
+import {Settings} from './lib/settings';
+
 export const UserStore = Fluxxor.createStore({
   initialize: function() {
-    this.waitingForUsersPosition = false;
-    this.position = null;
-    this.bearer = null;
-
+    this.isAuthenticatingUser = true;
+    this.didFailAuthenticating = false;
+    this.position = Settings.getPosition();
+    this.auth = null;
+    
     this.bindActions(
-      Actions.Constants.GET_USERS_POSITION, this.onGetUsersPosition,
-      Actions.Constants.GET_USERS_POSITION_SUCCESS, this.onGetUsersPositionSuccess,
-      Actions.Constants.GET_USERS_POSITION_FAIL, this.onGetUsersPositionFail
+      Actions.Constants.AUTHENTICATE_USER, this.onAuthenticateUser,
+      Actions.Constants.AUTHENTICATE_USER_SUCCESS, this.onAuthenticateUserSuccess,
+      Actions.Constants.AUTHENTICATE_USER_FAIL, this.onAuthenticateUserFail
     );
   },
 
-  onGetUsersPosition: function() {
-    this.waitingForUsersPosition = true;
+  onAuthenticateUser: function() {
+    this.isAuthenticatingUser = true;
+    this.didFailAuthenticating = false;
     this.emit('change');
   },
 
-  onGetUsersPositionSuccess: function(payload) {
-    this.waitingForUsersPosition = false;
-    this.position = {
-      'latitude': payload['coords']['latitude'],
-      'longitude': payload['coords']['longitude']
-    };
+  onAuthenticateUserSuccess: function(payload) {
+    this.isAuthenticatingUser = false;
+    this.didFailAuthenticating = false;
+    this.position = payload.position;
+    this.auth = payload.auth;
     this.emit('change');
-    },
+  },
 
-  onGetUsersPositionFail: function(payload) {
-    this.waitingForUsersPosition = false;
-    this.position = null;
+  onAuthenticateUserFail: function(payload) {
+    this.isAuthenticatingUser = false;
+    this.didFailAuthenticating = true;
+    this.auth = null;
     this.emit('change');
   },
 
   getState: function() {
     return {
-      waitingForUsersPosition: this.waitingForUsersPosition,
+      isAuthenticatingUser: this.isAuthenticatingUser,
+      didFailAuthenticating: this.didFailAuthenticating,
       position: this.position,
-      bearer: this.bearer
+      auth: this.auth
     };
   }
 });

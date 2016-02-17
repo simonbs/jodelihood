@@ -4,8 +4,8 @@ import Map from './Map';
 
 require("!style!css!sass!../styles/main.scss");
 
-export default class Main extends React.Component {
-  render() {
+var Main = React.createClass({
+  render: function() {
     return (
       <div className="container">
         <header className="header">
@@ -22,5 +22,6 @@ export default class Main extends React.Component {
       </div>
     )
   }
-}
+});
 
+module.exports = Main;

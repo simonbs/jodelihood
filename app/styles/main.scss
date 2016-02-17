@@ -1,7 +1,14 @@
-html, body { height: 100%; margin: 0; padding: 0; }
+@import './globals';
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Verdana, sans-serif;
+}
 
 body {
-    background-color: #000000;
+    background-color: #fff;
 }
 
 #app {
@@ -22,10 +29,19 @@ body {
 
 .content-body {
     display: table-cell;
-    background: #e7e7e7;
+    background: #fff;
 }
 
 .header, .footer {
     padding: 10px 20px;
-    background: #f7f7f7;
+    background: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: $primaryColor;
+}
+
+a:hover {
+    text-decoration: underline;
 }
