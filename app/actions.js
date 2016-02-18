@@ -17,7 +17,7 @@ export const All = {
     var actions = this;
     this.dispatch(Constants.AUTHENTICATE_USER);
     var failure = function(error) {      
-      actions.dispatch(Constants.AUTHENTICATE_USER_FAIL);
+      actions.dispatch(Constants.AUTHENTICATE_USER_FAIL, { error: error });
     }
     var authSuccess = function(auth, position) {
       JodelClient.loadPosts(Settings.getAuth().access_token, function(posts) {
@@ -37,7 +37,14 @@ export const All = {
   },
   
   loadPosts: function() {
+    var actions = this;
     this.dispatch(Constants.LOAD_POSTS);
+    JodelClient.loadPosts(Settings.getAuth().access_token, function(posts) {
+      console.log(posts);
+      actions.dispatch(Constants.LOAD_POSTS_SUCCESS, { posts: posts });
+    }, function (error) {
+      actions.dispatch(Constants.LOAD_POSTS_FAIL, { error: error });
+    });
   },
 };
 

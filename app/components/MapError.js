@@ -1,6 +1,10 @@
 var React = require('react');
 
 var MapError = React.createClass({
+  propTypes: {
+    error: React.PropTypes.object
+  },
+  
   render: function() {
     return (
       <div>

@@ -13,7 +13,7 @@ export const JodelClient = {
              if (error != null) {
                failure(error);
              } else {
-               success(response.body);
+               success(response.body.posts);
              }
            });
   },

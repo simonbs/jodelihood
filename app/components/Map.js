@@ -4,6 +4,7 @@ var Fluxxor = require('fluxxor');
 import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 import LoadingMap from './LoadingMap';
 import MapError from './MapError';
+import {default as MarkerClusterer} from "react-google-maps/lib/addons/MarkerClusterer";
 
 require("!style!css!sass!../styles/map.scss");
 
@@ -14,10 +15,7 @@ var Map = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin('UserStore', 'PostsStore')],
 
   getInitialState: function() {
-    return {
-      isAuthenticatingUser: true,
-      didFailAuthenticating: false
-    };
+    return {}
   },
 
   getStateFromFlux: function() {
@@ -27,7 +25,7 @@ var Map = React.createClass({
       postsData: flux.store('PostsStore').getState()
     }
   },
-  
+    
   render: function() {
     if (this.state.userData.position == null) {
       // Use default position
@@ -38,8 +36,8 @@ var Map = React.createClass({
     } else {
       position = this.state.userData.position
     }
-      
-    return (
+    
+    return (      
       <div style={{
         width: "100%",
         height: "100%",
@@ -52,18 +50,23 @@ var Map = React.createClass({
       }}>
       <GoogleMapLoader
       containerElement={
-        <div
-        {...this.props}
-        style={{
-          height: "100%",
-        }}
-        />
+        <div style={{ height: "100%", }} />
       }
       googleMapElement={
         <GoogleMap
-        ref={(map) => (this._googleMapComponent = map)}
-        defaultZoom={13}
-        defaultCenter={{lat: position.latitude, lng: position.longitude}}>
+        defaultZoom={3}
+        defaultCenter={{ lat: position.latitude, lng: position.longitude }}>
+        <MarkerClusterer
+        averageCenter={ true }
+        enableRetinaIcons={ true }
+        gridSize={ 60 }>
+        { this.state.postsData.posts.map(post => (
+          <Marker
+          position={post.location.coordinate}
+          key={post.id}
+          />
+        )) }
+        </MarkerClusterer>
         </GoogleMap>
       }
       />
