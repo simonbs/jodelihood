@@ -89,10 +89,10 @@ function parsePosts(posts) {
               id: post.post_id,
               location: {
                 name: post.location.name,
-                coordinate: [
-                  parseFloat(post.location.loc_coordinates.lat),
-                  parseFloat(post.location.loc_coordinates.lng)
-                ]
+                coordinate: {
+                  lat: parseFloat(post.location.loc_coordinates.lat),
+                  lng: parseFloat(post.location.loc_coordinates.lng)
+                }
               },
               color: post.color,
               created_at: post.created_at,

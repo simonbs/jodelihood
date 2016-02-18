@@ -3,14 +3,15 @@ var Fluxxor = require('fluxxor');
 
 import LoadingMap from './LoadingMap';
 import MapError from './MapError';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map as LeafletMap, Marker, Popup, TileLayer } from 'react-leaflet';
+import MarkerCluster from './MarkerCluster';
 
 require('!style!css!sass!../styles/map.scss');
 
 const FluxMixin = Fluxxor.FluxMixin(React);
 const StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var JodelsMap = React.createClass({
+var Map = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin('UserStore', 'PostsStore')],
 
   getInitialState: function() {
@@ -45,23 +46,14 @@ var JodelsMap = React.createClass({
         height: "100%",
         position: "relative"
       }}>
-      <Map center={position} zoom={13}>
+      <LeafletMap center={position} zoom={13}>
       <TileLayer
       url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      { this.state.postsData.posts.map(function(post) {
-        return (
-          <Marker
-          key={post.id}
-          position={post.location.coordinate}>
-          <Popup>
-          <span>{post.message}</span>
-          </Popup>
-          </Marker>
-        )
-      })}     
-      </Map>
+      <MarkerCluster
+      markers={this.state.postsData.posts} />
+      </LeafletMap>
       {(() => {
         if (this.state.userData.isAuthenticatingUser) {
           return <LoadingMap />
@@ -74,5 +66,5 @@ var JodelsMap = React.createClass({
   }
 });
 
-module.exports = JodelsMap;
+module.exports = Map;
 
