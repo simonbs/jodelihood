@@ -1,6 +1,6 @@
 var React = require('react');
 
-import Map from './Map';
+import JodelsMap from './JodelsMap';
 
 require("!style!css!sass!../styles/main.scss");
 
@@ -13,7 +13,7 @@ var Main = React.createClass({
         </header>
         <section className="content">
           <div className="content-body">
-            <Map />
+            <JodelsMap />
           </div>
         </section>
         <footer className="footer">

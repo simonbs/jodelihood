@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var Fluxxor = require('fluxxor');
 var Actions = require('./actions');
 
@@ -81,27 +82,29 @@ export const PostsStore = Fluxxor.createStore({
 });
 
 function parsePosts(posts) {
-  return posts.map(function(post) {
-    var latlng = new google.maps.LatLng(
-      post.location.loc_coordinates.lat,
-      post.location.loc_coordinates.lng);
-    return {
-      id: post.post_id,
-      location: {
-        name: post.location.name,
-        coordinate: latlng
-      },
-      color: post.color,
-      created_at: post.created_at,
-      vote_count: post.vote_count,
-      message: post.message,
-      post_own: post.post_own,
-      distance: post.distance,
-      child_count: post.child_count,
-      image_url: post.image_url,
-      thumbnail_url: post.thumbnail_url
-    }
-  });
+  return _.chain(posts)
+          .filter((post => post.post_own != "team"))
+          .map(function(post) {
+            return {
+              id: post.post_id,
+              location: {
+                name: post.location.name,
+                coordinate: [
+                  parseFloat(post.location.loc_coordinates.lat),
+                  parseFloat(post.location.loc_coordinates.lng)
+                ]
+              },
+              color: post.color,
+              created_at: post.created_at,
+              vote_count: post.vote_count,
+              message: post.message,
+              post_own: post.post_own,
+              distance: post.distance,
+              child_count: post.child_count,
+              image_url: post.image_url,
+              thumbnail_url: post.thumbnail_url
+            }
+          }).value();
 }
 
 export const All = {

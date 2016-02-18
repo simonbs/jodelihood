@@ -43,3 +43,10 @@
     width: 100%;
     margin-top: 10pt;
 }
+
+// react-leaflet embeds the map in a div with leaflet-container class.
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
