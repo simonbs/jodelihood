@@ -1,8 +1,9 @@
 var React = require('react');
 
 import Map from './Map';
+import '../lib/main';
 
-require("!style!css!sass!../styles/main.scss");
+require('!style!css!sass!../styles/main.scss');
 
 var Main = React.createClass({
   render: function() {

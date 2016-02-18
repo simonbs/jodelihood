@@ -3,6 +3,9 @@ import Leaflet from 'leaflet';
 import MarkerPopup from './MarkerPopup';
 import { MapLayer } from 'react-leaflet';
 
+var jQuery = require('jquery');
+var timeago = require('timeago');
+
 var ReactDOMServer = require('react-dom/server');
 require('leaflet.markercluster');
 
@@ -38,7 +41,7 @@ class MarkerCluster extends MapLayer {
         );
 
         var markerIcon = L.divIcon({
-          html: '<div class="map-marker-inner" style="background-color:#' + post.color + ';"></div>',
+          html: '<div class="map-marker-inner" style="background-color:#' + post.color + ';">' + jQuery.timeago(post.created_at) + '</div>',
           className: 'map-marker',
           iconSize: [35, 35]
         });
