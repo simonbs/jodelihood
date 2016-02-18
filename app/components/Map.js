@@ -48,8 +48,8 @@ var Map = React.createClass({
       }}>
       <LeafletMap center={position} zoom={13}>
       <TileLayer
-      url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url='https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'
+      attribution='&copy; Wikimedia maps beta | Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
       />
       <MarkerCluster
       markers={this.state.postsData.posts} />
