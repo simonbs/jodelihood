@@ -14,11 +14,25 @@ export const Constants = {
 
 export const All = {
   authenticateUser: function() {
+    var actions = this;
     this.dispatch(Constants.AUTHENTICATE_USER);
+    var failure = function(error) {      
+      actions.dispatch(Constants.AUTHENTICATE_USER_FAIL);
+    }
+    var authSuccess = function(auth, position) {
+      JodelClient.loadPosts(Settings.getAuth().access_token, function(posts) {
+        console.log(posts);
+        actions.dispatch(Constants.AUTHENTICATE_USER_SUCCESS, {
+          auth: auth,
+          position: position,
+          posts: posts
+        });
+      }, failure);
+    }
     if (!Settings.hasValidAuth()) {
-      authenticateNewUser(this);
+      authenticateNewUser(authSuccess, failure);
     } else {
-      placeExistingUser(this, Settings.getAuth().access_token);
+      placeExistingUser(Settings.getAuth().access_token, authSuccess, failure);
     }
   },
   
@@ -27,38 +41,23 @@ export const All = {
   },
 };
 
-function placeExistingUser(flux, bearer) {
+function placeExistingUser(bearer, success, failure) {
   getUsersPosition(function(position) {
     Settings.setPosition(position);
     JodelClient.place(bearer, position, function(auth) {
-      flux.dispatch(Constants.AUTHENTICATE_USER_SUCCESS, {
-        position: position,
-        auth: Settings.getAuth(),
-      });
-    }, function(error) {        
-      flux.dispatch(Constants.AUTHENTICATE_USER_POSITION_FAIL);
-    });
-  }, function() {
-    // Failed getting users position
-    flux.dispatch(Constants.AUTHENTICATE_USER_POSITION_FAIL);
-  });    
+      success(Settings.getAuth(), position);
+    }, failure);
+  }, failure);    
 }
 
-function authenticateNewUser(flux) {
+function authenticateNewUser(success, failure) {
   getUsersPosition(function(position) {
     Settings.setPosition(position);
     JodelClient.authenticate(position, function(auth) {
       Settings.setAuth(auth);
-      flux.dispatch(Constants.AUTHENTICATE_USER_SUCCESS, {
-        position: position,
-        auth: auth,
-      });
-    }, function(error) {        
-      flux.dispatch(Constants.AUTHENTICATE_USER_POSITION_FAIL);
-    });
-  }, function() {
-    flux.dispatch(Constants.AUTHENTICATE_USER_POSITION_FAIL);
-  });    
+      success(auth, position);
+    }, failure);
+  }, failure);    
 }
 
 function getUsersPosition(success, failure) {

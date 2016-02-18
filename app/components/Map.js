@@ -62,7 +62,7 @@ var Map = React.createClass({
       googleMapElement={
         <GoogleMap
         ref={(map) => (this._googleMapComponent = map)}
-        defaultZoom={12}
+        defaultZoom={13}
         defaultCenter={{lat: position.latitude, lng: position.longitude}}>
         </GoogleMap>
       }
