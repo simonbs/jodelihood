@@ -13,7 +13,9 @@ var MarkerPopup = React.createClass({
       {(() => {
         if (this.props.post.image_url != null) {
           return (
+            <p className='map-popup-content-image'>
             <img src={this.props.post.image_url} style={{ width: '100%' }} />
+            </p>
           )          
         } else {
           return <p>{this.props.post.message}</p>
@@ -24,7 +26,7 @@ var MarkerPopup = React.createClass({
       <div className='votes-title'>Votes</div>
       <div className='votes-count'>{this.props.post.vote_count}</div>
       </div>
-      </div>
+      </div>      
       </div>
     );
   }

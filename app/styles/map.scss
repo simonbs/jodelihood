@@ -75,24 +75,42 @@
     text-shadow: 0px 1px rgba(0, 0, 0, 0.35);   
 }
 
-// Popup
+// Ensure there's no aditional spacing around
+// text in the popup.
+.map-popup-wrapper p,
+.map-popup-inner-wrapper p,
+.map-popup-content p {
+    padding: 0;
+    margin: 0;
+}
+
+// Popup wrapper
 .map-popup-wrapper {
     @include selection(none);
     display: table;
 }
 
+// Inner popup wrapper
 .map-popup-inner-wrapper {
     display: table-row;
 }
 
+// All image content
 .map-popup-content {
     @include word-wrap;
     width: 90%;
     display: table-cell;
     padding-right: 5px;
-    background-color: red;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
+// Wrapper for image
+.map-popup-content-image {
+    line-height: 0; // Ensure there's no spacing below the image
+}
+
+// Votes column
 .map-popup-votes {
     font-size: 22pt;
     width: 10%;
@@ -102,6 +120,7 @@
     padding-left: 5px;
 }
 
+// Votes title
 .map-popup-votes .votes-title {
     @include opacity(0.35);
     font-size: 10pt;
@@ -110,40 +129,53 @@
     top: 2px;
 }
 
+// Votes count
 .map-popup-votes .votes-count {
     position: relative;
     bottom: 2px;
 }
 
+// Popup
 .map-popup .leaflet-popup,
 .map-popup .leaflet-popup-content-wrapper {
     color: #ffffff;
     font-size: 14pt;
 }
 
+// Popup color
 .map-popup-8ABDB0 .leaflet-popup-tip,
 .map-popup-8ABDB0 .leaflet-popup-content-wrapper {
     background: #8abdb0;
 }
 
+// Popup color
 .map-popup-FFBA00 .leaflet-popup-tip,
 .map-popup-FFBA00 .leaflet-popup-content-wrapper {
     background: #ffba00;
 }
 
+// Popup color
 .map-popup-DD5F5F .leaflet-popup-tip,
 .map-popup-DD5F5F .leaflet-popup-content-wrapper {
     background: #dd5f5f;
 }
 
+// Popup color
 .map-popup-06A3CB .leaflet-popup-tip,
 .map-popup-06A3CB .leaflet-popup-content-wrapper {
     background: #06a3cb;
 }
 
+// Popup color
 .map-popup-FF9908 .leaflet-popup-tip,
 .map-popup-FF9908 .leaflet-popup-content-wrapper {
     background: #ff9908;
+}
+
+// Popup color
+.map-popup-9EC41C .leaflet-popup-tip,
+.map-popup-9EC41C .leaflet-popup-content-wrapper {
+    background: #9ec41c;
 }
 
 // react-leaflet embeds the map in a div with leaflet-container class.

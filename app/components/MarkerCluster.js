@@ -7,6 +7,8 @@ var _ = require('underscore');
 var jQuery = require('jquery');
 var timeago = require('timeago');
 
+var jQuery = require('jquery');
+
 var ReactDOMServer = require('react-dom/server');
 require('leaflet.markercluster');
 
@@ -65,17 +67,13 @@ class MarkerCluster extends MapLayer {
                  }
                })
                .on('popupopen', function() {
+                 console.log(post);
                  if (nextProps.onPopupOpened != null) {
                    nextProps.onPopupOpened(leafletMarker);
                  }
                })
                .on('click', function() {
-                 // Offset the coordinate a bit to ensure images are displayed on the screen.
-                 let latOffset = post.image_url != null ? 0.02 : 0
-                 map.panTo({
-                   lat: post.location.coordinate.lat + latOffset,
-                   lng: post.location.coordinate.lng
-                 })
+                 map.panTo(post.location.coordinate);
                });
         
         markers.push(leafletMarker);
