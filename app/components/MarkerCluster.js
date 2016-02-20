@@ -54,8 +54,7 @@ class MarkerCluster extends MapLayer {
         let leafletMarker =
         Leaflet.marker(post.location.coordinate, { icon: markerIcon })
                .bindPopup(markerPopup, {
-                 maxHeight: 450,
-                 maxWidth: 300,
+                 maxWidth: 450,
                  minWidth: 250,
                  closeButton: false,
                  className: 'map-popup map-popup-' + post.color

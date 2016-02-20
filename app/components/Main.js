@@ -17,9 +17,6 @@ var Main = React.createClass({
             <Map />
           </div>
         </section>
-        <footer className="footer">
-          <p>&nbsp;</p>
-        </footer>
       </div>
     )
   }
