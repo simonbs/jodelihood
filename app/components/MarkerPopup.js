@@ -8,7 +8,15 @@ var MarkerPopup = React.createClass({
   render: function() {
     return (
       <div>
-      <p>{this.props.post.message}</p>
+      {(() => {
+        if (this.props.post.image_url != null) {
+          return (
+            <img src={this.props.post.image_url} style={{ width: '100%' }} />
+          )          
+        } else {
+          return <p>{this.props.post.message}</p>
+        }
+      })()}
       </div>
     );
   }

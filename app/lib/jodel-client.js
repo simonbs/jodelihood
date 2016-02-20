@@ -5,8 +5,8 @@ var FormData = require('form-data');
 var uuid = require('node-uuid');
 
 export const JodelClient = {
-  loadPosts: function(bearer, success, failure) {
-    request.get('https://api.go-tellm.com/api/v2/posts')
+  loadPosts: function(bearer, limit, success, failure) {
+    request.get('https://api.go-tellm.com/api/v2/posts?limit=' + limit)
            .set('Accept', 'application/json')
            .set('Authorization', 'Bearer ' + bearer)
            .end(function(error, response) {

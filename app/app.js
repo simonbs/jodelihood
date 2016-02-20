@@ -20,11 +20,25 @@ flux.on('dispatch', function(type, payload) {
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
+// Refresh posts after an amount of secons
+const REFRESH_POSTS_INTERVAL = 5 * 60;
+
 var Application = React.createClass({
   mixins: [FluxMixin],
 
   componentDidMount: function() {
-    this.getFlux().actions.authenticateUser();
+    var flux = this.getFlux();
+    flux.actions.authenticateUser();
+    var refreshPostsTimer = setInterval(function() {
+      flux.actions.loadPosts();
+    }, REFRESH_POSTS_INTERVAL * 1000);
+    this.setState({ refreshPostsTimer: refreshPostsTimer });
+  },
+
+  componentWillUnmount: function() {
+    if (this.state.refreshPostsTimer != null) {
+      clearTimeout(this.state.refreshPostsTimer);
+    }
   },
 
   render: function() {

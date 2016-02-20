@@ -15,7 +15,7 @@ var Map = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin('UserStore', 'PostsStore')],
 
   getInitialState: function() {
-    return {}
+    return { }
   },
 
   getStateFromFlux: function() {
@@ -48,11 +48,10 @@ var Map = React.createClass({
       }}>
       <LeafletMap center={position} zoom={13}>
       <TileLayer
-      url='https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'
-      attribution='&copy; Wikimedia maps beta | Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      url='http://otile3.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png'
+      attribution='&copy; Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
       />
-      <MarkerCluster
-      markers={this.state.postsData.posts} />
+      <MarkerCluster markers={this.state.postsData.posts} />
       </LeafletMap>
       {(() => {
         if (this.state.userData.isAuthenticatingUser) {

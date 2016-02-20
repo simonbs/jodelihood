@@ -60,7 +60,9 @@ export const PostsStore = Fluxxor.createStore({
 
     this.bindActions(
       Actions.Constants.AUTHENTICATE_USER_SUCCESS, this.onAuthenticateUserSuccess,
-      Actions.Constants.LOAD_POSTS, this.onLoadPosts
+      Actions.Constants.LOAD_POSTS, this.onLoadPosts,
+      Actions.Constants.LOAD_POSTS_SUCCESS, this.onLoadPostsSuccess,
+      Actions.Constants.LOAD_POSTS_FAIL, this.onLoadPostsFail
     );
   },
 
@@ -69,10 +71,14 @@ export const PostsStore = Fluxxor.createStore({
     this.emit('change');
   },
 
-  onLoadPosts: function(payload) {
-    this.posts = [];
+  onLoadPosts: function(payload) { },
+
+  onLoadPostsSuccess: function(payload) {
+    this.posts = parsePosts(payload.posts);
     this.emit('change');
   },
+
+  onLoadPostsFail: function(payload) { },
 
   getState: function() {
     return {
@@ -101,7 +107,7 @@ function parsePosts(posts) {
               post_own: post.post_own,
               distance: post.distance,
               child_count: post.child_count,
-              image_url: post.image_url,
+              image_url: post.image_url != null ? "http://" + post.image_url : null,
               thumbnail_url: post.thumbnail_url
             }
           }).value();
