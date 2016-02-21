@@ -19,15 +19,14 @@ flux.on('dispatch', function(type, payload) {
 
 // Router
 var ReactRouter = require('react-router');
+import { browserHistory } from 'react-router'
 var Router = ReactRouter.Router;
 var createElement = function(Component, props) {
   return <Component {...props} flux={flux} />
 };
-var createBrowserHistory = require('history/lib/createBrowserHistory');
-var history = createBrowserHistory();
 var routes = require('./routes');
 
 ReactDOM.render(
-  <Router createElement={createElement} history={history} routes={routes} />,
+  <Router createElement={createElement} history={browserHistory} routes={routes} />,
   document.getElementById('app')
 );
