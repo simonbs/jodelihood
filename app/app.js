@@ -1,51 +1,33 @@
+// React
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Fluxxor = require('fluxxor');
-
-var Actions = require('./actions');
-var Stores = require('./stores');
-
-import Main from './components/Main';
-var flux = new Fluxxor.Flux(Stores.All, Actions.All);
-
 window.React = React;
+
+// Fluxxor
+var Stores = require('./stores');
+var Actions = require('./actions');
+var Fluxxor = require('fluxxor');
+var flux = new Fluxxor.Flux(Stores.All, Actions.All);
 window.flux = flux;
 
+// Debugging dispatches
 flux.on('dispatch', function(type, payload) {
   if (console && console.log) {
     console.log('[Dispatch]', type, payload);
   }
 });
 
-var FluxMixin = Fluxxor.FluxMixin(React);
-var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+// Router
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var createElement = function(Component, props) {
+  return <Component {...props} flux={flux} />
+};
+var createBrowserHistory = require('history/lib/createBrowserHistory');
+var history = createBrowserHistory();
+var routes = require('./routes');
 
-// Refresh posts after an amount of secons
-const REFRESH_POSTS_INTERVAL = 5 * 60;
-
-var Application = React.createClass({
-  mixins: [FluxMixin],
-
-  componentDidMount: function() {
-    var flux = this.getFlux();
-    flux.actions.authenticateUser();
-    var refreshPostsTimer = setInterval(function() {
-      flux.actions.loadPosts();
-    }, REFRESH_POSTS_INTERVAL * 1000);
-    this.setState({ refreshPostsTimer: refreshPostsTimer });
-  },
-
-  componentWillUnmount: function() {
-    if (this.state.refreshPostsTimer != null) {
-      clearTimeout(this.state.refreshPostsTimer);
-    }
-  },
-
-  render: function() {
-    return (
-      <Main />
-    );
-  },
-});
-
-ReactDOM.render(<Application flux={flux} />, document.getElementById('app'));
+ReactDOM.render(
+  <Router createElement={createElement} history={history} routes={routes} />,
+  document.getElementById('app')
+);
