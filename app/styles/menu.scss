@@ -88,9 +88,14 @@ nav {
         }
         
         a {
-            color: $primaryColor;
-            text-transform: uppercase;
             font-size: 12pt;
+            letter-spacing: 2px;
+            color: $secondaryColor;            
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: $primaryColor;
         }
     }
 }
