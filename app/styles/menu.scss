@@ -1,0 +1,140 @@
+@import './globals';
+@import './mixins/small';
+@import './mixins/retina';
+
+$menuHeight: 60px;
+$hamburgerMenuIngredientHeight: 3px;
+$hamburgerMenuIngredientSpacing: 6px;
+$hamburgerMenuIngredientCount: 3;
+$hamburgerHeight: $hamburgerMenuIngredientCount * $hamburgerMenuIngredientHeight + ($hamburgerMenuIngredientCount - 1) * $hamburgerMenuIngredientSpacing;
+
+// Navigation
+.menu {
+    max-height: 60px;
+    z-index: 999;
+    width: 100%;
+    overflow: hidden;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    padding-bottom: 6px;
+}
+
+.open-nav {
+    max-height: 400px !important;
+    .mobile-toggle {
+        transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+    }
+}
+
+.menu-logo-wrapper {
+    float: left;
+}
+
+.menu-content-wrapper {
+    display: table;
+    height: 60px;
+}
+
+.menu-content-inner-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.logo {
+    width: 171px;
+    height: 37px;
+    display: block;
+    background: url('../images/logo.png');
+    @include image-2x('../images/logo2x.png', 171px, 37px);
+    text-transform: uppercase;
+    vertical-align: center;
+    @include small {
+        float: none;
+    }
+}
+
+nav {
+    float: right;
+    width: 60%;
+    min-height: 60px;
+    @include small {
+        width: 100%;
+    }
+
+    ul {
+        list-style: none;
+        overflow: hidden;
+        text-align: right;
+        float: right;
+        @include small {
+            padding-top: 10px;
+            margin-bottom: 22px;
+            float: left;
+            text-align: center;
+            width: 100%;
+        }
+
+        li {
+            display: inline-block;
+            margin-top: 2px;
+            margin-left: 35px;
+            line-height: 1.5;
+            @include small {
+                width: 100%;
+                padding: 7px 0;
+                margin: 0;
+            }
+        }
+        
+        a {
+            color: $primaryColor;
+            text-transform: uppercase;
+            font-size: 12pt;
+        }
+    }
+}
+
+.mobile-toggle-wrapper {
+    float: right;
+}
+
+.mobile-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+    width: 30px;
+    height: $hamburgerHeight;
+    top: ($menuHeight - $hamburgerHeight) / 2;
+    float: right;
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    transition: all 200ms ease-in;
+    
+    @include small {
+        display: block;
+    }
+
+    span {
+        width: 30px;
+        height: 4px;
+        margin-bottom: 6px;
+        border-radius: 1000px;
+        background: $primaryColor;
+        display: block;
+    }
+}
+
+.row {
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 2%;
+}
+
+* {
+    box-sizing: border-box;
+}
+

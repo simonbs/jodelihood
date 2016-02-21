@@ -1,7 +1,8 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
   
-import Map from './Map';
+var Menu = require('./Menu');
+var Map = require('./Map');
 
 require('../lib/main');
 require('!style!css!sass!../styles/main.scss');
@@ -32,7 +33,7 @@ var Main = React.createClass({
     return (
       <div className='container'>
         <header className='header'>
-          <p>&nbsp;</p>
+          <Menu />
         </header>
         <section className='content'>
           <div className='content-body'>
