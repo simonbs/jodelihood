@@ -10,25 +10,7 @@ require('!style!css!sass!../styles/main.scss');
 // Refresh posts after an amount of secons
 const REFRESH_POSTS_INTERVAL = 5 * 60;
 
-var Main = React.createClass({
-  mixins: [ Fluxxor.FluxMixin(React) ],
-
-  componentDidMount: function() {
-  console.log('Main was mounted');
-    var flux = this.getFlux();
-    flux.actions.authenticateUser();
-    var refreshPostsTimer = setInterval(function() {
-      flux.actions.loadPosts();
-    }, REFRESH_POSTS_INTERVAL * 1000);
-    this.setState({ refreshPostsTimer: refreshPostsTimer });
-  },
-
-  componentWillUnmount: function() {
-    if (this.state.refreshPostsTimer != null) {
-      clearTimeout(this.state.refreshPostsTimer);
-    }
-  },
-  
+var Main = React.createClass({  
   render: function() {
     return (
       <div className='container'>

@@ -11,7 +11,7 @@ var Menu = React.createClass({
       <div className='row'>
       <div className='menu-content-wrapper menu-logo-wrapper'> 
       <div className='menu-content-inner-wrapper'>
-      <Link to='home' className='logo'></Link>
+      <Link to='/' className='logo'></Link>
       </div>
       </div>
       <div className='mobile-toggle'>

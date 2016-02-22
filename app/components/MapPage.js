@@ -8,11 +8,11 @@ import MarkerCluster from './MarkerCluster';
 
 require('!style!css!sass!../styles/map.scss');
 
-const FluxMixin = Fluxxor.FluxMixin(React);
-const StoreWatchMixin = Fluxxor.StoreWatchMixin;
-
 var MapPage = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin('UserStore', 'PostsStore')],
+  mixins: [
+    Fluxxor.FluxMixin(React),
+    Fluxxor.StoreWatchMixin('UserStore', 'PostsStore')
+  ],
 
   getInitialState: function() {
     return { }
@@ -23,6 +23,21 @@ var MapPage = React.createClass({
     return {
       userData: flux.store('UserStore').getState(),
       postsData: flux.store('PostsStore').getState()
+    }
+  },
+
+  componentDidMount: function() {
+    var flux = this.getFlux();
+    flux.actions.authenticateUser();
+    var refreshPostsTimer = setInterval(function() {
+      flux.actions.loadPosts();
+    }, REFRESH_POSTS_INTERVAL * 1000);
+    this.setState({ refreshPostsTimer: refreshPostsTimer });
+  },
+
+  componentWillUnmount: function() {
+    if (this.state.refreshPostsTimer != null) {
+      clearTimeout(this.state.refreshPostsTimer);
     }
   },
 

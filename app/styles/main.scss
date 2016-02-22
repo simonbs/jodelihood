@@ -1,4 +1,5 @@
 @import './globals';
+@import './mixins/small';
 
 $fa-font-path: 'font-awesome/fonts';
 @import './font-awesome/scss/font-awesome';
@@ -34,6 +35,16 @@ body {
 .content-body {
     display: table-cell;
     background: #fff;
+}
+
+// Wrapper around a simple page
+.page-content {
+    width: 80%;
+    max-width: 940px;
+    margin: 0 auto;
+    @include small {
+        width: 90%;
+    }
 }
 
 .header, .footer {

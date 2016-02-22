@@ -12,9 +12,9 @@ var HowItWorksPage = require('./components/HowItWorksPage');
 var NotFoundPage = require('./components/NotFoundPage');
 
 var routes = (
-  <Route component={Main} name='home' path='/'>
-  <Route component={AboutPage} name='about' path='about' />
-  <Route component={HowItWorksPage} name='how-it-works' path='how-it-works' />
+  <Route component={Main} path='/'>
+  <Route component={AboutPage} path='about' />
+  <Route component={HowItWorksPage} path='how-it-works' />
   <IndexRoute component={MapPage} />
   <Router path='*' component={NotFoundPage} />
   </Route>

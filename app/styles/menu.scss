@@ -132,11 +132,13 @@ nav {
 }
 
 .row {
-    width: 100%;
+    width: 80%;
     max-width: 940px;
     margin: 0 auto;
-    position: relative;
-    padding: 0 2%;
+
+    @include small {
+        width: 90%;
+    }
 }
 
 * {
