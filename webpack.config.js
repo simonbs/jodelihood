@@ -4,7 +4,7 @@ module.exports = {
   cache: true,
   entry: './app/app.js',
   output: {
-    path: __dirname + '/app',
+    path: __dirname + '/build',
     filename: 'bundle.js'
   },
   devtool: 'source-map',
