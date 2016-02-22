@@ -3,6 +3,7 @@
 @import './mixins/rounded';
 @import './mixins/box-shadow';
 @import './mixins/word-wrap';
+@import './mixins/flexbox';
 @import './globals';
 
 .map-overlay {
@@ -24,18 +25,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-}
-
-.map-error-title {
-    font-size: 100pt;
-    text-align: center;
-    width: 100%;
-}
-
-.map-error-message {
-    font-size: 12pt;
-    text-align: center;
-    width: 100%;
 }
 
 .map-error-retry {
@@ -87,8 +76,8 @@
 // Popup wrapper
 .map-popup-wrapper {
     @include selection(none);
-    display: flex;
-    align-items: center;
+    @include flexbox;
+    @include flexbox-align(center);
     justify-content: center;
 }
 

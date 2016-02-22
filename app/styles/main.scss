@@ -1,5 +1,6 @@
 @import './globals';
 @import './mixins/small';
+@import './mixins/flexbox';
 
 $fa-font-path: 'font-awesome/fonts';
 @import './font-awesome/scss/font-awesome';
@@ -42,14 +43,34 @@ body {
     width: 80%;
     max-width: 940px;
     margin: 0 auto;
+    height: 100%;
     @include small {
         width: 90%;
     }
 }
 
 .header, .footer {
-    /* padding: 10px 20px; */
     background: #fff;
+}
+
+.error {
+    @include flexbox;
+    @include flexbox-align(center);
+    @include flexbox-direction(column);
+    @include flexbox-justify-content(center);
+    height: 100%;
+}
+
+.error-title {
+    font-size: 100pt;
+    text-align: center;
+    width: 100%;
+}
+
+.error-message {
+    font-size: 12pt;
+    text-align: center;
+    width: 100%;
 }
 
 a {
