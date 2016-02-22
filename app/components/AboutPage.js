@@ -12,7 +12,7 @@ var AboutPage = React.createClass({
       Jodel shows a rough distance between the user of the application and the author of each post in the timeline of the community. In order to calculate the distance between users, the latitude and longitude form which each post was made must be stored on the backend. This distance can be, should be and in fact is calculated on Jodels backend and is sent to the smartphone app whenever a user loads all posts from nearby users. However, while the distance is calculated on the backend the developers of Jodel also provides the latitude and longitude from which each post was made in th response sent to the application. This compromises the privacy of the users.<br /><br />
       This data is never visible to users in the application but it is provided in the data sent from Jodels backend to the smartphone application and is essentially publicly available, as demonstrated by this website.<br /><br />
       <strong>The purpose of Jodlihood has never been to expose Jodel in any negative way.</strong> I am a user of the app. I like the app. I do, however, intend to examplify the consequences careless handling of sensitive data has.<br /><br />
-      <strong>Please note</strong> that while all of this sounds very scary, the locations sent from the backend to the app has a radius of about 500 meters. However, personal data is still unnecessarily exposed to the public.</p>
+      <strong>Please note</strong> that while all of this sounds very scary, the locations sent from the backend to the app has a radius of about 500 meters.</p>
       </div>
     )
   }
