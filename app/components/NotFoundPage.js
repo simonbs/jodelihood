@@ -1,13 +1,13 @@
 var React = require('react');
 
-var AboutPage = React.createClass({  
+var NotFoundPage = React.createClass({  
   render: function() {
     return (
       <div>
-      <p>About</p>
+      <p>Not found</p>
       </div>
     )
   }
 });
 
-module.exports = AboutPage;
+module.exports = NotFoundPage;

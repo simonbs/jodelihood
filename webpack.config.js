@@ -8,6 +8,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     loaders: [
       { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass'] },

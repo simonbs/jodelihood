@@ -1,11 +1,13 @@
 var React = require('react');
 
-var HowItWorks = React.createClass({  
+var HowItWorksPage = React.createClass({  
   render: function() {
     return (
-      <div></div>
+      <div>
+      <p>How it works</p>
+      </div>
     )
   }
 });
 
-module.exports = HowItWorks;
+module.exports = HowItWorksPage;

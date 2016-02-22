@@ -22,7 +22,7 @@ var Menu = React.createClass({
       <nav>
       <ul>
       <li><Link to='about'>About</Link></li>
-      <li><Link to='how-does-it-work'>How does it work?</Link></li>
+      <li><Link to='how-it-works'>How does it work?</Link></li>
       <li><a href='http://twitter.com/simonbs' target='_blank'><i className='fa fa-twitter'></i></a></li>
       </ul>
       </nav>      
