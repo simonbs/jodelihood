@@ -54,7 +54,7 @@
     "around"
   ],
   "author": "Simon B. Støvring",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/simonbs/jodelihood/issues"
   },
