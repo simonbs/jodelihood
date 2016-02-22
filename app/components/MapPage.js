@@ -8,6 +8,9 @@ import MarkerCluster from './MarkerCluster';
 
 require('!style!css!sass!../styles/map.scss');
 
+// Refresh posts after an amount of secons
+const REFRESH_POSTS_INTERVAL = 5 * 60;
+
 var MapPage = React.createClass({
   mixins: [
     Fluxxor.FluxMixin(React),
