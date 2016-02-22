@@ -1,5 +1,3 @@
-# Jodelihood
-
 ![Jodelihood](https://raw.githubusercontent.com/simonbs/jodelihood/master/logo.png)
 
 The smartphone application [Jodel](https://jodel-app.com) lets users anonymously post short messages and photos that are visible to other nearby users. Jodlihood shows a map of all recent posts made by users that are near the visitor of this website.
