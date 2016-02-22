@@ -1,3 +1,7 @@
+var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
+    
 require('!style!css!sass!../styles/menu.scss');
 
 var Menu = React.createClass({
@@ -7,7 +11,7 @@ var Menu = React.createClass({
       <div className='row'>
       <div className='menu-content-wrapper menu-logo-wrapper'> 
       <div className='menu-content-inner-wrapper'>
-      <a className='logo' href='/'></a>
+      <Link to='home' className='logo'></Link>
       </div>
       </div>
       <div className='mobile-toggle'>
@@ -17,8 +21,9 @@ var Menu = React.createClass({
       </div>
       <nav>
       <ul>
-      <li><a href='#'>About</a></li>
-      <li><a href='#'>How does it work?</a></li>
+      <li><Link to='about'>About</Link></li>
+      <li><Link to='how-does-it-work'>How does it work?</Link></li>
+      <li><a href='http://twitter.com/simonbs' target='_blank'><i className='fa fa-twitter'></i></a></li>
       </ul>
       </nav>      
       </div>

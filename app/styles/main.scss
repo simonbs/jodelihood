@@ -1,5 +1,8 @@
 @import './globals';
 
+$fa-font-path: 'font-awesome/fonts';
+@import './font-awesome/scss/font-awesome';
+
 html, body {
     height: 100%;
     margin: 0;

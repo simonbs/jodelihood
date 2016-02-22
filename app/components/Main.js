@@ -2,8 +2,8 @@ var React = require('react');
 var Fluxxor = require('fluxxor');
   
 var Menu = require('./Menu');
-var Map = require('./Map');
 
+require('jquery');
 require('../lib/main');
 require('!style!css!sass!../styles/main.scss');
 

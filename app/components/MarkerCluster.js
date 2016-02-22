@@ -6,8 +6,7 @@ import { MapLayer } from 'react-leaflet';
 var _ = require('underscore');
 var jQuery = require('jquery');
 var timeago = require('timeago');
-
-var jQuery = require('jquery');
+require('../lib/jquery.timeago.en-short');
 
 var ReactDOMServer = require('react-dom/server');
 require('leaflet.markercluster');

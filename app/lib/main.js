@@ -1,6 +1,3 @@
-import './jquery.timeago.en-short';
-
-// Mobile Navigation
 $(document).ready(function() {
   $('.mobile-toggle').click(function() {
     if ($('.menu').hasClass('open-nav')) {

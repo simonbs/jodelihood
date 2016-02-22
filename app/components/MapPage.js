@@ -11,7 +11,7 @@ require('!style!css!sass!../styles/map.scss');
 const FluxMixin = Fluxxor.FluxMixin(React);
 const StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var Map = React.createClass({
+var MapPage = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin('UserStore', 'PostsStore')],
 
   getInitialState: function() {
@@ -65,5 +65,5 @@ var Map = React.createClass({
   }
 });
 
-module.exports = Map;
+module.exports = MapPage;
 
