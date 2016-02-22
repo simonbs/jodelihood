@@ -21,4 +21,6 @@ Pull requests for new features and bug fixes are welcome.
 
 ## Usage
 
+Install all necessary dependencies using `npm install`.
+
 In order to run the application, you should first bundle the files using `npm run deploy`. Thereafter you can run the application in production using `npm start`. In order to run the application in a development environment, you should run `npm run dev`.
