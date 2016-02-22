@@ -11,7 +11,9 @@ Jodel is meant to be an anonymous community in which the author of each post is 
 ## Features
 
 - Automatically authenticates with the Jodel service using your current location
+- Automatically loads new posts near your
 - View Jodel posts near you on a map
+- Clusters posts that are close and spiderifies clusters when clicking on them
 - View the vote count of each post
 - Fully responsive
 
