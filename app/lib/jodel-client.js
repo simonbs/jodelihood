@@ -1,5 +1,3 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
 var request = require('superagent');
 var FormData = require('form-data');
 var uuid = require('node-uuid');

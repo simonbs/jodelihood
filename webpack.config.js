@@ -13,8 +13,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass'] },
-      { test: /\.json$/, loader: 'json' },
+      { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader'] },
+      { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,

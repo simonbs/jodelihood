@@ -1,6 +1,3 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
-
 export const GoogleClient = {
   lookupUserPosition: function(position, success, failure) {
     var lat = position.coords.latitude;
