@@ -1,6 +1,5 @@
 var request = require('superagent');
 var FormData = require('form-data');
-var uuid = require('node-uuid');
 
 export const JodelClient = {
   loadPosts: function(bearer, limit, success, failure) {
@@ -39,12 +38,11 @@ export const JodelClient = {
   },
   
   authenticate: function(position, success, failure) {
-    var device_uid = uuid.v4();
     request.post('https://api.go-tellm.com/api/v2/users')
            .send({
              'client_id': 'cd871f92-a23f-4afc-8fff-51ff9dc9184e',
-             'client_secret': device_uid,
-             'device_uid': device_uid,
+             'client_secret': 'GgCwk3ElTfc3NAlX6zpnBLixKIsM4zHVWPrsUFGCeio%3D',
+             'device_uid': 'GgCwk3ElTfc3NAlX6zpnBLixKIsM4zHVWPrsUFGCeio%3D',
              'location[city]': position.city,
              'location[country]': position.country,
              'location[loc_accuracy]': 1000,
