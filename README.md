@@ -1,5 +1,7 @@
 ![Jodelihood](https://raw.githubusercontent.com/simonbs/jodelihood/master/logo.png)
 
+**IMPORTANT NOTE**: It seems that Jodel no longer includes the location from which a post was made in their API response. As a result of this, Jodelihood is no longer functional. I consider this a good thing. As soon as this project was published, I contacted Jodel to dicuss the privacy of their users and I'm happy to see that it has been improved.
+
 The smartphone application [Jodel](https://jodel-app.com) lets users anonymously post short messages and photos that are visible to other nearby users. Jodelihood shows a map of all recent posts made by users that are near the visitor of this website.
 
 Jodel is meant to be an anonymous community in which the author of each post is unknown and personal information is kept, well, personal. The company behind Jodel emphasize this on their website as part of the ["What Jodel is all about?"](https://jodel-app.com/whats-jodel/) section. As of February 22, 2016 the company writes that the service lets you *"connect with fellow students* ***without exposing your personal information****"*. This is not the case. Personal information is unnecessarily exposed.
